@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <link
+      href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./styles.css"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
+    <title>StrangeCraft Digital</title>
+   
+    <link rel="icon" type="image/x-icon" href="./media/favicon.webp">
+</head>
+
+<body>    
+    <header id="menu">
+        <button id="button-open-menu" onclick="openMenu()">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+        </button>
+        
+        <nav class="navbar">
+            <button id="button-close-menu" onclick="closeMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+            </button>
+            <li><a href="/"><img src="./media/icon-strangecraft.png" alt="Logo"></a></li>
+            <li><a href="./what-we-do.html">What we do</a></li>
+            <li><a href="./projects.html">Projects</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+        </nav>
+
+            <div id="overlay" onclick="closeMenu()"></div>
+
+        <div class="socials-wrapper">       
+            <div class="socials-container"><a target="_blank" href="https://www.youtube.com/@StrangeCraftDigital">
+                <svg fill="#ffffff" height="200px" width="200px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-271 311.2 256 179.8" xml:space="preserve" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M-59.1,311.2h-167.8c0,0-44.1,0-44.1,44.1v91.5c0,0,0,44.1,44.1,44.1h167.8c0,0,44.1,0,44.1-44.1v-91.5 C-15,355.3-15,311.2-59.1,311.2z M-177.1,450.3v-98.5l83.8,49.3L-177.1,450.3z"></path> </g></svg>
+            </a></div>
+            <div class="socials-container"><a target="_blank" href="https://www.linkedin.com/company/strangecraft-digital/">
+               <svg fill="#ffffff" height="200px" width="200px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-143 145 512 512" xml:space="preserve" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M329,145h-432c-22.1,0-40,17.9-40,40v432c0,22.1,17.9,40,40,40h432c22.1,0,40-17.9,40-40V185C369,162.9,351.1,145,329,145z M41.4,508.1H-8.5V348.4h49.9V508.1z M15.1,328.4h-0.4c-18.1,0-29.8-12.2-29.8-27.7c0-15.8,12.1-27.7,30.5-27.7 c18.4,0,29.7,11.9,30.1,27.7C45.6,316.1,33.9,328.4,15.1,328.4z M241,508.1h-56.6v-82.6c0-21.6-8.8-36.4-28.3-36.4 c-14.9,0-23.2,10-27,19.6c-1.4,3.4-1.2,8.2-1.2,13.1v86.3H71.8c0,0,0.7-146.4,0-159.7h56.1v25.1c3.3-11,21.2-26.6,49.8-26.6 c35.5,0,63.3,23,63.3,72.4V508.1z"></path> </g></svg>
+            </a></div> 
+            <div class="socials-container"><a href="mailto:andreizbereaofficial@gmail.com">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480v58q0 59-40.5 100.5T740-280q-35 0-66-15t-52-43q-29 29-65.5 43.5T480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480v58q0 26 17 44t43 18q26 0 43-18t17-44v-58q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93h200v80H480Zm0-280q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Z"/></svg>
+            </a></div>
+        </div>
+    </header>
+
+    <div id="page-content">
+        <div class="video-main">
+
+            <video loop="loop" autoplay="autoplay">
+                <source src="./media/video-main.webm" type="video/mp4"/>
+            </video>
+
+            <div class="video-overlay"><img src="./media/logo-strangecraft-overlay.png" alt="StrangeCraft Digital"></div>
+        </div>
+
+        <div class="text-wrapper">
+            <div class="text-container"> 
+                <span>StrangeCraft Digital</span> is an independent CGI studio specializing in film, television, commercials, and video game content. We bring extensive expertise across both pre-production and post-production — from consulting, design, and concept development to filming and the creation of high-quality animations.
+                <br><br>
+                Based in Chisinau, Moldova, our international team unites talented artists from Italy, Croatia, the UK, Romania, and Moldova.
+                <br><br>
+                In an increasingly AI-driven world, we stand out by adding a distinctly human touch — blending technology with artistry to create work that feels alive.
+            </div>
+        </div>
+
+        <h1>SHOWREELS</h1>
+
+        <div class="showreels-wrapper">
+            
+            <div class="showreels-container">               
+                <video class="video-gallery" data-index="0" poster="./media/showreels-thumbnail-1.jpg">
+                    <source src="./media/video-showreels-1.webm" type="video/mp4"/>
+                </video>
+            </div>
+
+            <div class="showreels-container">            
+                <video class="video-gallery" data-index="1" poster="./media/showreels-thumbnail-2.jpg">
+                    <source src="./media/video-showreels-2.webm" type="video/mp4"/>
+                </video>  
+            </div>
+
+            <div class="showreels-container">               
+                <video class="video-gallery" data-index="2" poster="./media/showreels-thumbnail-3.jpg">
+                    <source src="./media/video-showreels-3.webm" type="video/mp4"/>
+                </video>               
+            </div>
+        </div>
+       
+        <div id="video-modal" class="video-modal">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <button class="modal-close">x</button>
+                <button class="modal-prev">&lt;</button>
+                <video id="modal-video" controls controlsList="nodownload">
+                    <source src="" type="video/mp4"/>
+                </video>
+                <button class="modal-next">&gt;</button>
+            </div>
+        </div>
+
+        <div class="image-gallery-wrapper">
+            <div class="image-gallery-container">
+                <img src="./media/img-example-1.jpg" alt="Image Example" data-index="0">
+            </div>
+            <div class="image-gallery-container">
+                <img src="./media/img-example-2.jpg" alt="Image Example" data-index="1">
+            </div>
+            <div class="image-gallery-container">
+                <img src="./media/img-example-3.png" alt="Image Example" data-index="2">
+            </div>
+            <div class="image-gallery-container">
+                <img src="./media/img-example-4.jpg" alt="Image Example" data-index="3">
+            </div>
+        </div>
+
+        <div id="image-modal" class="image-modal">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <button class="modal-close">x</button>
+                <button class="modal-prev">&lt;</button>
+                <img id="modal-image" src="" alt="">
+                <button class="modal-next">&gt;</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div>
+            <br>
+            <b>StrangeCraft Digital</b>
+            <br>
+            Chisinau, Moldova
+        </div>
+        
+        <div>
+            <br>
+            +37360452097
+            <br>
+            <a href="mailto:andreizbereaofficial@gmail.com">andreizbereaofficial@gmail.com</a> 
+        </div>
+
+        <div>
+            <br><br>
+            © 2025 by StrangeCraft Digital
+        </div>
+    </footer>
+   
+    <script src="./scripts.js"></script>
+
+</body>
+</html>

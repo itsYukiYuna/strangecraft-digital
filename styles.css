@@ -1,7 +1,7 @@
 html {
     font-family: Orbitron;
 
-    background-image: url("../media/background.png");
+    background-image: url("./media/background.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -158,10 +158,10 @@ footer div {
 }
 
 .video-main video {
-    height: auto;
-    max-width: 100%;
+    height: 100%;
+    width: 100%;
     margin-left: 4rem;
-    object-fit: contain;
+    object-fit: cover;
     z-index: -10;
     position: relative;
 }
@@ -197,7 +197,7 @@ footer div {
     text-align: left;
 
     color: #C7E1D6;
-    line-height: 2rem;
+    line-height: 1.5vmax;
     font-size: 1.2vmax;
     font-weight: 500;
 
@@ -497,7 +497,7 @@ h2 {
 
 .video-breakdown video, .video-breakdown-details video {
     height: auto;
-    max-width: 100%;
+    width: 100%;
     margin-left: 5rem;
     object-fit: contain;
     z-index: -10;
@@ -516,13 +516,13 @@ h2 {
 
 .booklet-text-wrapper {
     color: #C7E1D6;
-    height: 35.1rem;
+    height: 35vmax;
     width: 48%;
     background-color: rgba(10, 10, 10, 0.9);
 }
 
 .booklet-text {
-    padding: 4rem 2rem;
+    padding: 4vmax 2vmax;
     font-size: 1.5vmax;
 }
 
@@ -531,7 +531,7 @@ h2 {
 }
 
 .booklet-video video {
-    height: 35rem;
+    height: 35vmax;
     width: 100%;
     object-fit: cover;
     cursor: pointer;    
@@ -796,6 +796,4 @@ h2 {
     footer div {
         margin-left: 15%;
     }
-
 }
-

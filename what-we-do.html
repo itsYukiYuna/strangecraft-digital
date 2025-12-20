@@ -53,7 +53,7 @@
 
     <div id="page-content">
         <div class="video-breakdown">    
-            <video loop="loop" autoplay="autoplay" muted>
+            <video loop autoplay muted playsinline preload="auto">
                 <source src="./media/video-breakdown.mp4" type="video/mp4"/>
             </video>
         </div>
@@ -69,7 +69,7 @@
         </div>
 
         <div class="video-breakdown-details">    
-            <video loop="loop" autoplay="autoplay" muted>
+            <video loop autoplay muted playsinline preload="auto">
                 <source src="./media/video-breakdown-details.mp4" type="video/mp4"/>
             </video>
         </div>
@@ -95,7 +95,7 @@
                 </div>
             </div>
             <div class="booklet-video">
-                <video loop="loop" autoplay="autoplay" muted onclick="this.paused ? this.play() : this.pause(); arguments[0].preventDefault();">
+                <video loop autoplay muted playsinline preload="auto" onclick="this.paused ? this.play() : this.pause(); arguments[0].preventDefault();">
                     <source src="./media/video-booklet.mp4" type="video/mp4"/>
                 </video>
             </div>

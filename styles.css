@@ -228,7 +228,7 @@ h1, h2, h3 {
     max-width: var(--container-wide);
     margin: 0 auto ;
     /* Massive vertical padding creates a deep breath between sections */
-    padding: 14rem 4vw 7rem; 
+    padding: 8rem 4vw 8rem; 
     align-items: start;
 }
 

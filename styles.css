@@ -680,6 +680,9 @@ h1, h2, h3 {
     .contact-card {
         padding: 3rem 1.5rem;
     }
+    .contact-logo {
+    margin-top: 7vh;
+    }
 }
 /* ================= FOOTER ================= */
 footer {

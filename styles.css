@@ -207,7 +207,7 @@ h1, h2, h3 {
 /* ================= TYPOGRAPHY & EDITORIAL TEXT ================= */
 .text-wrapper {
     /* Generous top padding for breathing room */
-    padding: 6rem 4vw 4rem;
+    padding: 3rem 4vw 4rem;
     max-width: var(--container-wide);
     margin: 0 auto;
     text-align: center;
@@ -226,9 +226,9 @@ h1, h2, h3 {
     grid-template-columns: 1fr 2fr; 
     gap: 4rem;
     max-width: var(--container-wide);
-    margin: 0 auto auto calc(0px + 400px) ;
+    margin: 0 auto ;
     /* Massive vertical padding creates a deep breath between sections */
-    padding: 14rem 4vw 14rem; 
+    padding: 14rem 4vw 7rem; 
     align-items: start;
 }
 
@@ -770,7 +770,7 @@ footer a:hover { color: var(--accent-color); }
 }
 
 /* ================= ULTRAWIDE OVERRIDE (MUST STAY AT BOTTOM) ================= */
-@media (min-aspect-ratio: 2/1) {
+@media (min-aspect-ratio: 2.5/1) {
     .video-main {
         height: auto;
         padding: 100px 4vw 2rem; 
@@ -787,7 +787,7 @@ footer a:hover { color: var(--accent-color); }
     
     .intro-section {
         margin-left: auto;
-        margin-right: calc(auto + 200px);
+        margin-right: auto;
     }
     
     /* Intelligently handles the Booklet on 32:9 displays */

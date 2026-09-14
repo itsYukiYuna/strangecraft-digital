@@ -1,145 +1,117 @@
-// Menu Function
-const navbar = document.querySelector('nav');
+// Header Scroll Effect
+const header = document.querySelector('.site-header');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
 
-function openMenu() {
-    if (!navbar) return;
-    navbar.classList.add('show');
-    document.getElementById('overlay')?.classList.add('show');
-    document.body.classList.add('menu-open');
+// Mobile Menu Toggle
+function toggleMenu() {
+    const nav = document.querySelector('.desktop-nav');
+    nav.classList.toggle('open');
+    
+    // Toggle body scroll
+    if (nav.classList.contains('open')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
 }
-function closeMenu() {
-    if (!navbar) return;
-    navbar.classList.remove('show');
-    document.getElementById('overlay')?.classList.remove('show');
-    document.body.classList.remove('menu-open');
-}
 
-window.openMenu = openMenu;
-window.closeMenu = closeMenu;
-
-// Image Gallery Function
+// Image Gallery Logic
 const galleryImages = document.querySelectorAll('.image-gallery-container img');
 const imageModal = document.getElementById('image-modal');
 const modalImage = document.getElementById('modal-image');
 
 if (imageModal && modalImage) {
-    const modalClose = imageModal.querySelector('.modal-close');
-    const modalPrev = imageModal.querySelector('.modal-prev');
-    const modalNext = imageModal.querySelector('.modal-next');
     let currentIndex = 0;
 
-    galleryImages.forEach((img) => {
-        img.addEventListener('click', (e) => {
-            currentIndex = parseInt(e.target.dataset.index);
-            showModal();
+    galleryImages.forEach((img, index) => {
+        img.addEventListener('click', () => {
+            currentIndex = index;
+            showModal(imageModal, modalImage, img.src);
         });
     });
 
-    modalClose.addEventListener('click', closeModal);
-    modalPrev.addEventListener('click', showPrevious);
-    modalNext.addEventListener('click', showNext);
-    imageModal.querySelector('.modal-overlay').addEventListener('click', closeModal);
+    imageModal.querySelector('.modal-close').addEventListener('click', () => closeModal(imageModal));
+    imageModal.querySelector('.modal-overlay').addEventListener('click', () => closeModal(imageModal));
+    imageModal.querySelector('.modal-prev').addEventListener('click', () => navigateImage(-1));
+    imageModal.querySelector('.modal-next').addEventListener('click', () => navigateImage(1));
 
-    function showModal() {
-        modalImage.src = galleryImages[currentIndex].src;
-        imageModal.classList.add('show');
-    }
-
-    function closeModal() {
-        imageModal.classList.remove('show');
-    }
-
-    function showPrevious() {
-        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-        modalImage.classList.remove('transitioning');
-        void modalImage.offsetWidth;
-        modalImage.classList.add('transitioning');
+    function navigateImage(direction) {
+        currentIndex = (currentIndex + direction + galleryImages.length) % galleryImages.length;
         modalImage.src = galleryImages[currentIndex].src;
     }
-
-    function showNext() {
-        currentIndex = (currentIndex + 1) % galleryImages.length;
-        modalImage.classList.remove('transitioning');
-        void modalImage.offsetWidth;
-        modalImage.classList.add('transitioning');
-        modalImage.src = galleryImages[currentIndex].src;
-    }
-
-    document.addEventListener('keydown', (e) => {
-        if (!imageModal.classList.contains('show')) return;
-        if (e.key === 'ArrowLeft') showPrevious();
-        if (e.key === 'ArrowRight') showNext();
-        if (e.key === 'Escape') closeModal();
-    });
 }
 
-// Video Gallery Function
-const videoGallery = document.querySelectorAll('.video-gallery');
+// Video Gallery Logic
+const videoGalleryContainers = document.querySelectorAll('.showreels-container, .projects-container');
 const videoModal = document.getElementById('video-modal');
 const modalVideo = document.getElementById('modal-video');
 
-if (videoModal && modalVideo && videoGallery.length > 0) {
-    const videoModalClose = videoModal.querySelector('.modal-close');
-    const videoModalPrev = videoModal.querySelector('.modal-prev');
-    const videoModalNext = videoModal.querySelector('.modal-next');
+if (videoModal && modalVideo && videoGalleryContainers.length > 0) {
     let currentVideoIndex = 0;
 
-    videoGallery.forEach((video, index) => {
-        video.addEventListener('click', (e) => {
+    videoGalleryContainers.forEach((container, index) => {
+        container.addEventListener('click', (e) => {
             e.preventDefault();
             currentVideoIndex = index;
-            showVideoModal();
+            const source = container.querySelector('source');
+            if (source) showModal(videoModal, modalVideo, source.src, true);
         });
     });
 
-    videoModalClose.addEventListener('click', closeVideoModal);
-    videoModalPrev.addEventListener('click', showPreviousVideo);
-    videoModalNext.addEventListener('click', showNextVideo);
-    videoModal.querySelector('.modal-overlay').addEventListener('click', closeVideoModal);
-
-    function showVideoModal() {
-        const source = videoGallery[currentVideoIndex].querySelector('source');
-        if (source) {
-            modalVideo.src = source.src;
-            videoModal.classList.add('show');
-            modalVideo.play();
-        }
-    }
-
-    function closeVideoModal() {
-        videoModal.classList.remove('show');
+    videoModal.querySelector('.modal-close').addEventListener('click', () => {
+        closeModal(videoModal);
         modalVideo.pause();
-        modalVideo.currentTime = 0;
-    }
-
-    function showPreviousVideo() {
-        currentVideoIndex = (currentVideoIndex - 1 + videoGallery.length) % videoGallery.length;
-        modalVideo.classList.remove('transitioning');
-        void modalVideo.offsetWidth;
-        modalVideo.classList.add('transitioning');
-        const source = videoGallery[currentVideoIndex].querySelector('source');
-        if (source) {
-            modalVideo.src = source.src;
-            modalVideo.play();
-        }
-    }
-
-    function showNextVideo() {
-        currentVideoIndex = (currentVideoIndex + 1) % videoGallery.length;
-        modalVideo.classList.remove('transitioning');
-        void modalVideo.offsetWidth;
-        modalVideo.classList.add('transitioning');
-        const source = videoGallery[currentVideoIndex].querySelector('source');
-        if (source) {
-            modalVideo.src = source.src;
-            modalVideo.play();
-        }
-    }
-
-    document.addEventListener('keydown', (e) => {
-        if (!videoModal.classList.contains('show')) return;
-        if (e.key === 'ArrowLeft') showPreviousVideo();
-        if (e.key === 'ArrowRight') showNextVideo();
-        if (e.key === 'Escape') closeVideoModal();
     });
+    videoModal.querySelector('.modal-overlay').addEventListener('click', () => {
+        closeModal(videoModal);
+        modalVideo.pause();
+    });
+    
+    videoModal.querySelector('.modal-prev').addEventListener('click', () => navigateVideo(-1));
+    videoModal.querySelector('.modal-next').addEventListener('click', () => navigateVideo(1));
+
+    function navigateVideo(direction) {
+        currentVideoIndex = (currentVideoIndex + direction + videoGalleryContainers.length) % videoGalleryContainers.length;
+        const source = videoGalleryContainers[currentVideoIndex].querySelector('source');
+        if (source) {
+            modalVideo.src = source.src;
+            modalVideo.play();
+        }
+    }
 }
+
+// Global Modal Functions
+function showModal(modal, mediaElement, src, isVideo = false) {
+    mediaElement.src = src;
+    modal.classList.add('show');
+    if (isVideo) mediaElement.play();
+}
+
+function closeModal(modal) {
+    modal.classList.remove('show');
+}
+
+// Keyboard Navigation
+document.addEventListener('keydown', (e) => {
+    const isImageOpen = imageModal?.classList.contains('show');
+    const isVideoOpen = videoModal?.classList.contains('show');
+    
+    if (e.key === 'Escape') {
+        if (isImageOpen) closeModal(imageModal);
+        if (isVideoOpen) { closeModal(videoModal); modalVideo.pause(); }
+    }
+    if (e.key === 'ArrowLeft') {
+        if (isImageOpen) imageModal.querySelector('.modal-prev').click();
+        if (isVideoOpen) videoModal.querySelector('.modal-prev').click();
+    }
+    if (e.key === 'ArrowRight') {
+        if (isImageOpen) imageModal.querySelector('.modal-next').click();
+        if (isVideoOpen) videoModal.querySelector('.modal-next').click();
+    }
+});
